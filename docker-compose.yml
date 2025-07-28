@@ -1,0 +1,66 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: laravel-api
+    container_name: laravel-api
+    working_dir: /var/www/backend
+    volumes:
+      - ./backend:/var/www/backend
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    depends_on:
+      - mysql
+    user: "${UID:-1000}:${GID:-1000}"
+    networks:
+      - laravel
+
+  mysql:
+    image: mysql:8.0
+    container_name: laravel-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel
+
+  composer:
+    image: composer:latest
+    container_name: laravel-composer
+    working_dir: /var/www/backend
+    volumes:
+      - ./backend:/var/www/backend
+    entrypoint: ["composer"]
+    user: "${UID:-1000}:${GID:-1000}"
+    networks:
+      - laravel
+
+  vue:
+    image: node:20
+    container_name: vue-frontend
+    working_dir: /var/www/frontend
+    volumes:
+      - ./frontend:/var/www/frontend
+    ports:
+      - "5173:5173"
+    command: npx vite --host --force
+    user: "${UID:-1000}:${GID:-1000}"
+    networks:
+      - laravel
+
+networks:
+  laravel:
+
+volumes:
+  mysql_data:
+  vendor_data:
+  node_modules_data:

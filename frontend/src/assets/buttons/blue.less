@@ -1,0 +1,55 @@
+@import './default.less';
+
+.onhappy-button-blue {
+  .onhappy-button-default();
+  background: @buttonBlue;
+  border: 1px solid @buttonBlueBorder;
+
+  .onhappy-button-blue__label {
+    .button-label(@buttonBlueText);
+  }
+
+  &:hover {
+    background: @buttonBlueHover;
+    border-color: @buttonBlueHoverBorder;
+
+    .onhappy-button-blue__label {
+      color: @buttonBlueHoverText !important;
+    }
+  }
+
+  &:active {
+    background: @buttonBlueActive !important;
+    border-color: @buttonBlueActiveBorder !important;
+
+    .onhappy-button-blue__label {
+      color: @buttonBlueActiveText !important;
+    }
+  }
+
+  &:disabled {
+    background: @buttonBlueDisabled;
+    border-color: @buttonBlueDisabledBorder;
+    transition: 0.2s ease-in;
+
+    &:deep(.loading) {
+      i {
+        color: @buttonBlueDisabledText;
+      }
+    }
+
+    .onhappy-button-blue__label {
+      color: @buttonBlueDisabledText !important;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    background: @buttonBlueFocus;
+    border-color: @buttonBlueFocusBorder;
+
+    .onhappy-button-blue__label {
+      color: @buttonBlueFocusText !important;
+    }
+  }
+}

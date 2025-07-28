@@ -1,0 +1,55 @@
+@import "./default.less";
+
+.onhappy-button-orange {
+  .onhappy-button-default();
+  background: @buttonOrange;
+  border: 1px solid @buttonOrangeBorder;
+
+  .onhappy-button-orange__label {
+    .button-label(@buttonOrangeText);
+  }
+
+  &:hover {
+    background: @buttonOrangeHover;
+    border-color: @buttonOrangeHoverBorder;
+
+    .onhappy-button-orange__label {
+      color: @buttonOrangeTextHover !important;
+    }
+  }
+
+  &:active {
+    background: @buttonOrangeActive !important;
+    border-color: @buttonOrangeActiveBorder !important;
+
+    .onhappy-button-orange__label {
+      color: @buttonOrangeTextActive !important;
+    }
+  }
+
+  &:disabled {
+    background: @buttonOrangeDisabled;
+    border-color: @buttonOrangeDisabledBorder;
+    transition: 0.2s ease-in;
+
+    &:deep(.loading) {
+      i {
+        color: @buttonOrangeTextDisabled;
+      }
+    }
+
+    .onhappy-button-orange__label {
+      color: @buttonOrangeTextDisabled !important;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    background: @buttonOrangeFocus;
+    border-color: @buttonOrangeFocusBorder;
+
+    .onhappy-button-orange__label {
+      color: @buttonOrangeTextFocus !important;
+    }
+  }
+}

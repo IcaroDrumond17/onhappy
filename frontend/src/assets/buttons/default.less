@@ -1,0 +1,52 @@
+//format
+@import './format.less';
+//size
+@import './size.less';
+//colors
+@import './colors.less';
+
+.onhappy-button-default() {
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: 0.2s ease-in;
+  letter-spacing: 0.3px;
+  white-space: break-spaces;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-label(@color) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  color: @color;
+  font-weight: 500;
+
+  font-size: 0.625rem; //10px
+  line-height: 0.875rem; //14px
+
+  @media (min-width: 769px) {
+    font-size: 0.75rem; //12px
+    line-height: 1rem; //16px
+  }
+
+  @media (min-width: 1025px) {
+    font-size: 0.875rem; //14px
+    line-height: 1.125rem; //18px
+  }
+
+  &-icon {
+    fill: @color !important;
+  }
+}

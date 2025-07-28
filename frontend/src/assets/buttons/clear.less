@@ -1,0 +1,56 @@
+@import "./default.less";
+
+.onhappy-button-clear {
+  .onhappy-button-default();
+  background: @buttonClear;
+  border: 1px solid @buttonClearBorder;
+
+  .onhappy-button-clear__label {
+    .button-label(@buttonClearText);
+  }
+
+  &:hover {
+    background: @buttonClearHover;
+    border-color: @buttonClearHoverBorder;
+
+    .onhappy-button-clear__label {
+      color: @buttonClearHoverText !important;
+    }
+  }
+
+  &:active {
+    background: @buttonClearActive !important;
+    border-color: @buttonClearActiveBorder !important;
+
+    .onhappy-button-clear__label {
+      color: @buttonClearActiveText !important;
+    }
+  }
+
+  &:disabled {
+    background: @buttonClearDisabled;
+    border-color: @buttonClearDisabledBorder;
+    transition: 0.2s ease-in;
+
+    &:deep(.loading) {
+      i {
+        color: @buttonClearDisabledText;
+      }
+    }
+
+    .onhappy-button-clear__label {
+      color: @buttonClearDisabledText !important;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    background: @buttonClearFocus;
+    border-color: @buttonClearFocusBorder;
+
+    .onhappy-button-clear__label {
+      color: @buttonClearFocusText !important;
+    }
+  }
+}
+
